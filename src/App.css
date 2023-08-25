@@ -1,0 +1,20 @@
+.navHome {
+    background-color: rgb(0, 225, 255);
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    height: 80px;
+}
+
+.beerCard {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid gray;
+    width: 350px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.beerCard div {
+    margin: 20px;
+}
