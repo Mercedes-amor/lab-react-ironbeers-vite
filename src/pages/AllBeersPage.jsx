@@ -16,7 +16,7 @@ function AllBeersPage() {
       const response = await axios.get(
         "https://ih-beers-api2.herokuapp.com/beers"
       );
-    //   console.log("response.data", response.data);
+      //   console.log("response.data", response.data);
       setBeers(response.data);
       setIsLoading(false);
     } catch (err) {
@@ -32,15 +32,16 @@ function AllBeersPage() {
     <>
       {beers.map((eachBeer) => {
         return (
-          <li key={eachBeer._id} className="beerCard">
-            <Link to={`/beers/${eachBeer._id}`}>
+          <li key={eachBeer._id} style={{ listStyle: "none" }}>
+            <Link to={`/beers/${eachBeer._id}`} className="beerCard">
               <img src={eachBeer.image_url} alt="beerImg" height={200} />
+
+              <div>
+                <h3>{eachBeer.name}</h3>
+                <h5>{eachBeer.tagline}</h5>
+                <p>Created by: {eachBeer.contributed_by}</p>
+              </div>
             </Link>
-            <div>
-              <h3>{eachBeer.name}</h3>
-              <h5>{eachBeer.tagline}</h5>
-              <p>{eachBeer.contributed_by}</p>
-            </div>
           </li>
         );
       })}
