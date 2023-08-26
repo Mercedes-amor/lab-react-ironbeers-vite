@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Search from "../components/Search";
 
-function AllBeersPage() {
+function AllBeersPage(props) {
+    console.log("props", props)
   const [beers, setBeers] = useState(null);
+
+  const [beersToRender, setBeersToRender] = useState(null);
+
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,9 +33,17 @@ function AllBeersPage() {
     return <h3>...loading</h3>;
   }
 
+  if (beersToRender === null) {
+    return setBeersToRender(beers);
+  }
   return (
     <>
-      {beers.map((eachBeer) => {
+        <Search
+        beers={beers}
+        setBeersToRender={setBeersToRender}
+      />
+
+      {beersToRender.map((eachBeer) => {
         return (
           <li key={eachBeer._id} style={{ listStyle: "none" }}>
             <Link to={`/beers/${eachBeer._id}`} className="beerCard">
